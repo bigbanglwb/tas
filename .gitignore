@@ -29,3 +29,5 @@ doc/xml
 doc/_build
 .dockerwrap
 Makefile.local
+.cache/
+build/
