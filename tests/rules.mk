@@ -66,6 +66,9 @@ tests/tas_unit/fastpath: tests/tas_unit/fastpath.o tests/testutils.o \
 # build tests
 tests: $(TESTS)
 
+# build tests-pipeline
+tests-pipeline: $(TESTS_NONE) $(TESTS_LIBTAS) $(TESTS_SOCKETS)
+
 # run all simple testcases
 run-tests: $(TESTS_AUTO)
 	tests/libtas/tas_ll

@@ -5,7 +5,7 @@
 
 CPPFLAGS += -Iinclude/
 CPPFLAGS += $(EXTRA_CPPFLAGS)
-CFLAGS += -std=gnu99 -O3 -g3 -Wall -Werror -march=native -fno-omit-frame-pointer
+CFLAGS += -std=gnu99 -O3 -g3 -Wall -march=native -fno-omit-frame-pointer
 CFLAGS += $(EXTRA_CFLAGS)
 CFLAGS_SHARED += $(CFLAGS) -fPIC
 LDFLAGS += -pthread -g3
@@ -75,11 +75,11 @@ include $(dir)/rules.mk
 # dir := tools
 # include $(dir)/rules.mk
 
-# dir := tests
-# include $(dir)/rules.mk
+dir := tests
+include $(dir)/rules.mk
 
-# dir := doc
-# include $(dir)/rules.mk
+dir := doc
+include $(dir)/rules.mk
 
 ##############################################################################
 # Top level targets
