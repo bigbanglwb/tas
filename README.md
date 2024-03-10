@@ -14,9 +14,11 @@ Requirements:
   * TAS is built on top of Intel DPDK for direct access to the NIC. We have
     tested this version with dpdk versions (17.11.9, 18.11.5, 19.11).
 
-Assuming that dpdk is installed in `~/dpdk-inst` TAS can be built as follows:
 ```
-make RTE_SDK=~/dpdk-inst
+mkdir -p build
+cd build
+cmake .. -G Ninja  -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+ninja
 ```
 
 This will build the TAS service (binary `tas/tas`), client libraries (in
@@ -129,3 +131,10 @@ sudo ifconfig tas0 10.0.0.1/24 up
       `lib/tas/include/tas_ll.h`)
     * `lib/sockets`: socket emulation layer
   * `tools/`: debugging tools
+
+
+## test bench
+```
+sudo ./build/tests/usocket_bench
+```
+
