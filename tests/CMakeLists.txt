@@ -21,6 +21,7 @@ set(TESTS_SOCKETS
     usocket_conntx
     usocket_conntx_large
     usocket_move
+    usocket_bench
 )
 
 # Source files for automated unittests

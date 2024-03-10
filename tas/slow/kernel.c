@@ -48,6 +48,10 @@ int kernel_notifyfd = 0;
 static int epfd;
 
 struct dataplane_load core_load;
+void dump_ring_status(struct rte_ring * ring_buffer)
+{
+  printf("%s: %u/%u,\n", ring_buffer->name ,rte_ring_count(ring_buffer),rte_ring_get_capacity(ring_buffer));
+}
 
 int slowpath_main(void)
 {
@@ -144,11 +148,25 @@ int slowpath_main(void)
 
     if (cur_ts - last_print >= 1000000) {
       if (!config.quiet) {
-        printf("stats: drops=%"PRIu64" k_rexmit=%"PRIu64" ecn=%"PRIu64" acks=%"
-            PRIu64"\n", kstats.drops, kstats.kernel_rexmit, kstats.ecn_marked,
-            kstats.acks);
-        dataplane_dump_stats();
-        network_stats_print();
+        // printf("stats: drops=%"PRIu64" k_rexmit=%"PRIu64" ecn=%"PRIu64" acks=%"
+        //     PRIu64"\n", kstats.drops, kstats.kernel_rexmit, kstats.ecn_marked,
+        //     kstats.acks);
+        // dataplane_dump_stats();
+        // network_stats_print();
+
+        
+        // dump_ring_status(nbi_rx_queue);
+        // dump_ring_status(nbi_tx_queue);
+        // dump_ring_status(protocol_workqueues[0]);
+        // dump_ring_status(postproc_workqueue);
+        // dump_ring_status(dma_cmd_ring);
+        // dump_ring_status(sp_rx_ring);
+        // dump_ring_status(sched_tx_queue);
+        // dump_ring_status(sched_bump_queue);
+        // dump_ring_status(atx_ring);
+        // dump_ring_status(arx_ring);
+        // printf("\n");
+      
         fflush(stdout);
       }
       last_print = cur_ts;

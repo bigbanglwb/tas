@@ -181,7 +181,7 @@ static unsigned preprocess_rx(struct preproc_ctx *ctx, unsigned max_num)
     rte_prefetch0(&fp_state->flows_conn_info[flow_ids[i]]);
 
     /* Validate packet header */
-    if (validate_pkt_header(pkts[i]))
+    if (!validate_pkt_header(pkts[i]))
       goto slowpath;
 
     continue;

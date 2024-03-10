@@ -512,7 +512,7 @@ static void conn_packet(struct connection *c, const struct pkt_tcp *p,
     * why necessary*/
     send_control(c, TCP_ACK, 1, 0, 0);
   } else {
-    fprintf(stderr, "tcp_packet: unexpected connection state %u\n", c->status);
+    fprintf(stderr, "conn_packet: unexpected connection state: %u, tcp_flags:0x%x\n", c->status,TCPH_FLAGS(&p->tcp));
   }
 }
 
